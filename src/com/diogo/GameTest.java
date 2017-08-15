@@ -55,6 +55,7 @@ public class GameTest extends JPanel {
 				racquet.keyPressed(e);
 			}
 		});
+		this.setFocusable(true);
 	}
 	
 	@Override

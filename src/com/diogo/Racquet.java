@@ -15,9 +15,9 @@ public class Racquet {
 
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
-			vx = 1;
-		else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 			vx = -1;
+		else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+			vx = 1;
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -25,7 +25,7 @@ public class Racquet {
 	}
 
 	public void move() {
-		if(x + vx > 0 && x + vx < game.getWidth() - 60)
+		if(x + vx >= 0 && x + vx < game.getWidth() - 60)
 			x = x + vx;
 	}
 
