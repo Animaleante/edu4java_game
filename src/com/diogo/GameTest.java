@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -58,6 +59,11 @@ public class GameTest extends JPanel {
 		this.setFocusable(true);
 	}
 	
+	public void gameOver() {
+		JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);
+		System.exit(ABORT);
+	}
+	
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -67,6 +73,10 @@ public class GameTest extends JPanel {
 		
 		ball.paint(g2d);
 		racquet.paint(g2d);
+	}
+	
+	public Racquet getRacquet() {
+		return racquet;
 	}
 
 }

@@ -1,9 +1,14 @@
 package com.diogo;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 
 public class Racquet {
+	private static final int Y = 330;
+	private static final int WIDTH = 60;
+	private static final int HEIGHT = 10;
+	
 	private GameTest game;
 	
 	private int x = 0;
@@ -25,11 +30,19 @@ public class Racquet {
 	}
 
 	public void move() {
-		if(x + vx >= 0 && x + vx < game.getWidth() - 60)
+		if(x + vx >= 0 && x + vx < game.getWidth() - WIDTH)
 			x = x + vx;
 	}
 
 	public void paint(Graphics2D g2d) {
-		g2d.fillRect(x, 330, 60, 10);
+		g2d.fillRect(x, Y, WIDTH, HEIGHT);
+	}
+	
+	public Rectangle getBounds() {
+		return new Rectangle(x,  Y,  WIDTH, HEIGHT);
+	}
+	
+	public int getTopY() {
+		return Y;
 	}
 }
