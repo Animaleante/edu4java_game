@@ -20,9 +20,9 @@ public class Racquet {
 
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
-			vx = -1;
+			vx = -game.getSpeed();
 		else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
-			vx = 1;
+			vx = game.getSpeed();
 	}
 
 	public void keyReleased(KeyEvent e) {

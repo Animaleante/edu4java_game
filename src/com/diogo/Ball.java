@@ -18,23 +18,26 @@ public class Ball {
 	}
 	
 	public void move() {
+		boolean changeDirection = true;
+		
 		if(x + vx < 0) {
-			vx = 1;
+			vx = game.getSpeed();
 		} else if(x + vx > game.getWidth() - DIAMETER) {
-			vx = -1;
-		}
-		
-		if(y + vy < 0) {
-			vy = 1;
+			vx = -game.getSpeed();
+		} else if(y + vy < 0) {
+			vy = game.getSpeed();
 		} else if(y + vy > game.getHeight() - DIAMETER) {
-//			vy = -1;
 			game.gameOver();
+		} else if(collision()) {
+			vy = -game.getSpeed();
+			y = game.getRacquet().getTopY() - DIAMETER;
+			game.setSpeed(game.getSpeed()+1);
+		} else {
+			changeDirection = false;
 		}
 		
-		if(collision()) {
-			vy = -1;
-			y = game.getRacquet().getTopY() - DIAMETER;
-		}
+		if(changeDirection)
+			Sound.BALL.play();
 		
 		x = x + vx;
 		y = y + vy;

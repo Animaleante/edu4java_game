@@ -1,5 +1,7 @@
 package com.diogo;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -15,6 +17,8 @@ public class GameTest extends JPanel {
 	
 	private Ball ball;
 	private Racquet racquet;
+	
+	private int speed = 1;
 
 	public static void main(String[] args) throws InterruptedException {
 		GameTest game = new GameTest();
@@ -57,10 +61,15 @@ public class GameTest extends JPanel {
 			}
 		});
 		this.setFocusable(true);
+		
+		Sound.BACK.loop();
 	}
 	
 	public void gameOver() {
-		JOptionPane.showMessageDialog(this, "Game Over", "Game Over", JOptionPane.YES_NO_OPTION);
+		Sound.BACK.stop();
+		Sound.GAMEOVER.play();
+		
+		JOptionPane.showMessageDialog(this, "your score is: " + getScore(), "Game Over", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
 	}
 	
@@ -73,10 +82,25 @@ public class GameTest extends JPanel {
 		
 		ball.paint(g2d);
 		racquet.paint(g2d);
+		
+		g2d.setColor(Color.GRAY);
+		g2d.setFont(new Font("Verdana", Font.BOLD, 30));
+		g2d.drawString(String.valueOf(getScore()), 10, 30);
 	}
 	
 	public Racquet getRacquet() {
 		return racquet;
 	}
 
+	private int getScore() {
+		return speed - 1;
+	}
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 }
