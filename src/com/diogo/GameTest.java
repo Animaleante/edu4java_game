@@ -39,7 +39,7 @@ public class GameTest extends JPanel {
 		racquet.move();
 		
 		this.repaint();
-		Thread.sleep(10);
+		Thread.sleep((long) Math.floor((double)1000/60));
 	}
 
 	public GameTest() {
@@ -62,12 +62,12 @@ public class GameTest extends JPanel {
 		});
 		this.setFocusable(true);
 		
-		Sound.BACK.loop();
+//		Sound.BACK.loop();
 	}
 	
 	public void gameOver() {
-		Sound.BACK.stop();
-		Sound.GAMEOVER.play();
+//		Sound.BACK.stop();
+//		Sound.GAMEOVER.play();
 		
 		JOptionPane.showMessageDialog(this, "your score is: " + getScore(), "Game Over", JOptionPane.YES_NO_OPTION);
 		System.exit(ABORT);
